@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IGCSE 8주 공부표 (진단 맞춤)</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--paper:#FBFCFD;--grid:#E1E9F2;--ink:#1B2A41;--muted:#6B7787;--faint:#9AA5B3;--check:#2F9E6B;--check-soft:#E4F3EC;--amber:#F2B705;--amber-soft:#FDF3D4;--wrong:#D6453C;--wrong-soft:#FBEAE9;--card:#FFF;--line:#E6EBF1;}
+*{box-sizing:border-box;}body{margin:0;font-family:"Noto Sans KR","Space Grotesk",system-ui,sans-serif;color:var(--ink);background:var(--paper);background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:26px 26px;line-height:1.5;padding:0 0 80px;}
+.wrap{max-width:760px;margin:0 auto;padding:0 16px;}
+header{padding:34px 0 14px;}.eyebrow{font-family:"Space Mono",monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--check);font-weight:700;margin-bottom:6px;}
+h1{font-family:"Space Grotesk",sans-serif;font-size:clamp(26px,6.5vw,38px);font-weight:700;line-height:1.08;margin:0 0 6px;}
+.sub{color:var(--muted);font-size:13.5px;max-width:52ch;}
+.hubs{margin-top:12px;display:flex;gap:7px;flex-wrap:wrap;}
+.hub{font-size:11.5px;text-decoration:none;color:var(--ink);background:#fff;border:1px solid var(--line);border-radius:999px;padding:5px 12px;}.hub:hover{border-color:var(--check);color:var(--check);}
+.overall{margin:20px 0 6px;background:var(--ink);color:#fff;border-radius:13px;padding:18px 20px;position:sticky;top:8px;z-index:20;box-shadow:0 6px 20px rgba(27,42,65,.16);}
+.overall-top{display:flex;align-items:baseline;justify-content:space-between;}.overall-label{font-size:12px;color:#A9B6C9;}.overall-pct{font-family:"Space Mono",monospace;font-size:32px;font-weight:700;}
+.overall-count{font-family:"Space Mono",monospace;font-size:12px;color:#A9B6C9;margin-top:6px;}.bar{height:7px;border-radius:5px;background:rgba(255,255,255,.15);margin-top:12px;overflow:hidden;}.bar>i{display:block;height:100%;width:0;background:var(--check);border-radius:5px;transition:width .4s;}
+.wk{background:var(--card);border:1px solid var(--line);border-radius:13px;margin:14px 0;padding:16px 16px 6px;}
+.wk.pri{border-color:var(--amber);box-shadow:inset 4px 0 0 var(--amber);}
+.wh{display:flex;gap:10px;align-items:flex-start;margin-bottom:2px;}.wn{font-family:"Space Mono",monospace;font-weight:700;font-size:12px;color:var(--faint);min-width:36px;padding-top:3px;}.wk.pri .wn{color:var(--amber);}
+.wt{flex:1;}.wt h2{font-size:17px;font-weight:700;margin:0;}.tgs{display:flex;gap:5px;margin-top:5px;flex-wrap:wrap;}
+.tg{font-family:"Space Mono",monospace;font-size:9.5px;letter-spacing:.05em;text-transform:uppercase;padding:2px 6px;border-radius:4px;font-weight:700;}
+.tg.p{background:var(--amber-soft);color:#7a5c00;}.tg.c{background:#EEF2F7;color:var(--muted);}
+.wp{font-family:"Space Mono",monospace;font-size:12px;color:var(--muted);font-weight:700;white-space:nowrap;padding-top:3px;}
+ul{list-style:none;margin:8px 0 0;padding:0;}li{border-top:1px dashed var(--line);}li:first-child{border-top:none;}
+.task{display:flex;gap:10px;align-items:flex-start;padding:11px 2px;}
+.cb{flex:none;cursor:pointer;position:relative;}.cb input{position:absolute;opacity:0;width:0;height:0;}
+.bx{width:20px;height:20px;border:2px solid var(--ink);border-radius:5px;display:grid;place-items:center;background:#fff;transition:background .15s,border-color .15s;}
+.bx svg{width:12px;height:12px;stroke:#fff;stroke-width:3.2;fill:none;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:20;stroke-dashoffset:20;transition:stroke-dashoffset .2s ease .02s;}
+.cb input:checked~.bx{background:var(--check);border-color:var(--check);}.cb input:checked~.bx svg{stroke-dashoffset:0;}
+.bd{flex:1;min-width:0;}.r1{display:flex;align-items:center;gap:7px;justify-content:space-between;}
+.dy{font-family:"Space Mono",monospace;font-size:10.5px;color:var(--faint);font-weight:700;}
+.dt{font-family:"Space Mono",monospace;font-size:10.5px;color:var(--muted);border:1px solid var(--line);border-radius:5px;padding:1px 5px;background:#fff;width:118px;}.dt:focus{outline:2px solid rgba(47,158,107,.3);border-color:var(--check);}
+.wh2{font-size:14.5px;font-weight:500;margin-top:2px;transition:color .15s;}.done .wh2{color:var(--faint);text-decoration:line-through;text-decoration-color:var(--check);}
+.rev{font-size:12px;color:var(--muted);margin-top:5px;padding:5px 8px;background:#F7F9FC;border-radius:6px;border-left:3px solid var(--amber);}
+.chs{display:flex;gap:5px;margin-top:7px;flex-wrap:wrap;align-items:center;}
+.rf{font-size:11px;padding:2px 7px;border-radius:5px;line-height:1.3;}.rf b{font-family:"Space Mono",monospace;font-size:8.5px;margin-right:4px;letter-spacing:.04em;vertical-align:1px;}
+.rf.en{background:#EAF0FA;color:#27406b;}.rf.ko{background:#F2F0EC;color:#5a5247;}
+a.lk{font-size:11px;text-decoration:none;padding:2px 8px;border-radius:5px;font-weight:600;display:inline-flex;align-items:center;gap:2px;border:1px solid transparent;}
+a.lk.df{background:#E8EAF6;color:#3949AB;}a.lk.gm{background:#FFF3E0;color:#E65100;}a.lk.kh{background:#EAF6EF;color:#1d7a4f;}a.lk.yt{background:#FCEDED;color:#b3261e;}
+a.lk svg{width:9px;height:9px;}
+.rf.rv{background:var(--check-soft);color:#1d6f4c;}
+/* Quiz */
+.qz{margin-top:8px;border:1px solid var(--line);border-radius:8px;overflow:hidden;}
+.qz-toggle{width:100%;background:#F7F9FC;border:none;padding:8px 12px;cursor:pointer;font-family:"Noto Sans KR",sans-serif;font-size:12.5px;font-weight:600;color:var(--ink);text-align:left;display:flex;align-items:center;gap:6px;}
+.qz-toggle:hover{background:#EEF2F7;}
+.qz-toggle .arr{transition:transform .2s;font-size:10px;}
+.qz-body{display:none;padding:10px 12px;background:#fff;}
+.qz.open .qz-body{display:block;}.qz.open .arr{transform:rotate(90deg);}
+.qi{margin-bottom:10px;}.qi:last-child{margin-bottom:0;}
+.qi-t{font-size:13px;font-weight:600;margin-bottom:6px;}
+.qi-opts{display:flex;flex-direction:column;gap:4px;}
+.qi-o{display:flex;align-items:center;gap:7px;font-size:13px;padding:6px 8px;border:1px solid var(--line);border-radius:6px;cursor:pointer;}
+.qi-o:hover{border-color:var(--faint);}
+.qi-o input{position:absolute;opacity:0;width:0;height:0;}
+.qi-d{width:14px;height:14px;border:2px solid var(--faint);border-radius:50%;flex:none;}
+.qi-o input:checked~.qi-d{border-color:var(--ink);}.qi-o input:checked~.qi-d::after{content:"";display:block;width:7px;height:7px;border-radius:50%;background:var(--ink);margin:1.5px;}
+.qi-o.ok{border-color:var(--check);background:var(--check-soft);}.qi-o.no{border-color:var(--wrong);background:var(--wrong-soft);}
+.qz-btn{margin-top:8px;background:var(--ink);color:#fff;border:none;border-radius:6px;padding:7px 14px;font-size:12px;cursor:pointer;font-family:"Noto Sans KR",sans-serif;font-weight:600;}
+.qz-score{font-family:"Space Mono",monospace;font-size:12px;font-weight:700;margin-top:6px;}
+footer{margin-top:22px;text-align:center;}.reset{font-size:12px;color:var(--muted);background:none;border:1px solid var(--line);border-radius:7px;padding:8px 14px;cursor:pointer;font-family:"Noto Sans KR",sans-serif;}.note{font-size:11.5px;color:var(--faint);margin-top:12px;line-height:1.6;}
+@media(max-width:480px){.overall{top:4px;}.dt{width:110px;}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+<div class="eyebrow">진단 결과 맞춤 · 12/14</div>
+<h1>8주 공부표</h1>
+<p class="sub">대수·삼각법 기초 탄탄 → Week 1~2 압축, 함수 보강·신규 주제에 시간 확보. 매일 복습 + 퀴즈 포함.</p>
+<div class="hubs">
+<a class="hub" href="https://www.drfrost.org/" target="_blank">Dr Frost (메인 연습) ↗</a>
+<a class="hub" href="https://www.youtube.com/@GingerMathematician" target="_blank">Ginger Mathematician (0606 영상) ↗</a>
+<a class="hub" href="https://corbettmaths.com/contents/" target="_blank">Corbett (기초 영상) ↗</a>
+<a class="hub" href="https://www.mathsgenie.co.uk/" target="_blank">Maths Genie ↗</a>
+<a class="hub" href="https://www.khanacademy.org/math" target="_blank">Khan ↗</a>
+<a class="hub" href="https://www.physicsandmathstutor.com/maths-revision/igcse-additional-cie/" target="_blank">PMT 0606 ↗</a>
+</div>
+</header>
+<details style="margin:12px 0 4px;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:0;">
+<summary style="padding:12px 16px;cursor:pointer;font-size:13.5px;font-weight:700;list-style:none;display:flex;align-items:center;gap:6px;">📚 교재 목록 (눌러서 펼치기)</summary>
+<div style="padding:4px 16px 14px;font-size:13px;line-height:1.7;color:var(--muted);">
+<p style="margin:0 0 8px;font-weight:700;color:var(--ink);">영어 교재 (시험 대비 — 필수)</p>
+<span style="font-family:'Space Mono',monospace;font-size:10px;background:#EAF0FA;color:#27406b;padding:2px 6px;border-radius:4px;">0606</span> Hodder (Hanrahan·Powell·Wrigley) 또는 CUP (Sue Pemberton) = 주교재 / Haese 0606 = 문제 보강<br>
+<span style="font-family:'Space Mono',monospace;font-size:10px;background:#EAF0FA;color:#27406b;padding:2px 6px;border-radius:4px;">0607</span> Haese International Mathematics 0607 Extended<br>
+<span style="font-family:'Space Mono',monospace;font-size:10px;background:#EAF0FA;color:#27406b;padding:2px 6px;border-radius:4px;">0580</span> Pimentel·Wall <i>Core and Extended 5th ed</i> = 기초·삼각법 보조 (이미 보유)
+<p style="margin:10px 0 8px;font-weight:700;color:var(--ink);">한국어 교재 (개념 이해 — 보조)</p>
+<span style="font-family:'Space Mono',monospace;font-size:10px;background:#F2F0EC;color:#5a5247;padding:2px 6px;border-radius:4px;">개념서</span> 숨마쿰라우데 또는 마플교과서 — <b>대수 + 미적분Ⅰ</b> 우선<br>
+<span style="font-family:'Space Mono',monospace;font-size:10px;background:#F2F0EC;color:#5a5247;padding:2px 6px;border-radius:4px;">양치기</span> 쎈 (해당 단원 A→B→C)
+<p style="margin:10px 0 0;font-size:12px;color:var(--faint);">역할 분담: 개념은 한국어로 제대로 → 영어 용어 매핑 → 시험형 문제·GDC는 영어 교재 + Cambridge 기출로만</p>
+</div>
+</details>
+<div class="overall">
+<div class="overall-top"><span class="overall-label">전체 진행률</span><span class="overall-pct" id="oPct">0%</span></div>
+<div class="bar"><i id="oBar"></i></div>
+<div class="overall-count" id="oCount">0 / 48 완료</div>
+</div>
+<main id="weeks"></main>
+<footer>
+<button class="reset" id="reset">진행 상황 초기화</button>
+<p class="note">매일 루틴: 한국어 개념(50분) → 영어 예제(50분) → <b>Dr Frost 연습</b>(60분) → <b>복습+퀴즈(40분)</b><br>영상이 필요하면 상단 Corbett, 시험 마무리는 Cambridge 기출 + mark scheme으로.</p>
+</footer>
+</div>
+<script>
+const SV='<svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>';
+const EX='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg>';
+const dH=q=>'https://www.google.com/search?q=site:drfrost.org+'+encodeURIComponent(q);
+const gH=q=>'https://www.youtube.com/@GingerMathematician/search?query='+encodeURIComponent(q);
+const kH=q=>'https://www.khanacademy.org/search?page_search_query='+encodeURIComponent(q);
+const yH=q=>'https://www.youtube.com/results?search_query='+encodeURIComponent(q+' 강의');
+const D=[
+// W1: 이차 보강 + 삼각 압축 + radian 시작
+{t:"이차 보강 + 삼각 압축 + Radian",pri:false,days:[
+{d:"D1",w:"이차부등식 · 판별식 보강",rv:"진단에서 이차식 2/3 — 부등식·판별식 응용 복습",en:"0606 · Quadratic inequalities",ko:"공통수학1 · 이차부등식",df:"quadratic inequalities",gm:"0606 quadratic inequalities",kh:"quadratic inequalities",yt:"이차부등식",
+ qq:[{t:"x²−4x+3 > 0 의 해는?",o:["x<1 또는 x>3","1<x<3","x>3","x<1"],a:0},
+     {t:"kx²+6x+k=0 이 중근 → 양수 k는?",o:["3","6","9","18"],a:0}]},
+{d:"D2",w:"사인·코사인 법칙 빠른 복습",rv:"진단 4/4 — 감 유지용으로 빠르게",en:"Pimentel 0580 · Sine/Cosine rule",ko:"대수 · 삼각함수",df:"sine rule cosine rule",kh:"law of sines cosines",yt:"사인법칙 코사인법칙",
+ qq:[{t:"A=70°,B=40°,a=8. 변 b≈?",o:["5.47","6.13","7.52","4.88"],a:0},
+     {t:"변 5,7 끼인각 50°. 넓이≈?",o:["13.41","17.50","10.72","20.00"],a:0}]},
+{d:"D3",w:"radian + 호의 길이 (arc length)",rv:"D1 이차부등식 오답 다시",en:"0606 · Circular measure",ko:"대수 · 호도법",df:"arc length",gm:"0606 circular measure",kh:"radians arc length",yt:"호도법 호의 길이",
+ qq:[{t:"150°를 radian으로?",o:["5π/6","3π/4","2π/3","π/3"],a:0},
+     {t:"r=8, θ=0.9 rad. 호의 길이는?",o:["7.2","3.6","14.4","4.5"],a:0}]},
+{d:"D4",w:"부채꼴 넓이 · 활꼴 (segment)",rv:"D2 법칙 선택 문제 2개 다시",en:"0606 · Circular measure",ko:"대수 · 호도법",df:"area of a sector",gm:"0606 circular measure",kh:"area of sector",yt:"부채꼴 넓이",
+ qq:[{t:"r=10, θ=π/3. 부채꼴 넓이≈?",o:["52.36","104.72","31.42","15.71"],a:0},
+     {t:"r=5, θ=1.4 rad. 부채꼴의 둘레(호+반지름2개)는?",o:["17","7","12","22"],a:0}]},
+{d:"D5",w:"삼각함수 그래프 (sin·cos·tan)",rv:"D3 radian 변환 3문제 다시",en:"0606 · Trig graphs",ko:"대수 · 삼각함수 그래프",df:"trig graphs",gm:"0606 trigonometry",kh:"graphs of sine cosine",yt:"삼각함수 그래프",
+ qq:[{t:"y=3sin(2x)의 진폭과 주기는?",o:["진폭 3, 주기 180°","진폭 2, 주기 360°","진폭 3, 주기 360°","진폭 6, 주기 90°"],a:0},
+     {t:"y=cos(x−30°)는 y=cosx를 어떻게 이동?",o:["오른쪽 30°","왼쪽 30°","위로 30","아래로 30"],a:0}]},
+{d:"D6",w:"주간 복습 + Week 1 전체 퀴즈",rev:true}
+]},
+// W2: 삼각 확장 + 좌표기하
+{t:"삼각 항등식·방정식 + 좌표기하",pri:true,days:[
+{d:"D1",w:"삼각 항등식 (sin²+cos²=1, tan=sin/cos)",rv:"W1 오답 복습",en:"0606 · Trig identities",ko:"대수 · 삼각함수 항등식",df:"trig identities",gm:"0606 trigonometry identities",kh:"trigonometric identities",yt:"삼각함수 항등식",
+ qq:[{t:"(1−sin²x)/cosx 를 간단히 하면?",o:["cosx","sinx","1","tanx"],a:0},
+     {t:"sin²x + cos²x = ?",o:["1","0","sinx+cosx","2"],a:0}]},
+{d:"D2",w:"삼각방정식 기본 (0°≤x≤360°)",rv:"D1 항등식 간단화 2문제 다시",en:"0606 · Trig equations",ko:"대수 · 삼각방정식",df:"trig equations",gm:"0606 trigonometry equations",kh:"solving trig equations",yt:"삼각방정식",
+ qq:[{t:"cosx = −1/2, 0°≤x≤360°. 해는?",o:["120°, 240°","60°, 300°","150°, 210°","120°, 300°"],a:0},
+     {t:"sinx = √2/2, 0°≤x≤360°. 해는?",o:["45°, 135°","45°, 315°","135°, 225°","45° 만"],a:0}]},
+{d:"D3",w:"삼각방정식 심화 (이차형)",rv:"D2 기본 삼각방정식 3문제 다시",en:"0606 · Trig equations",ko:"대수 · 삼각방정식",df:"trig equations",kh:"solving quadratic trig equations",yt:"삼각방정식 이차",
+ qq:[{t:"2cos²x+cosx−1=0, 0°≤x≤360°. 해는?",o:["60°, 180°, 300°","60°, 120°, 180°","0°, 120°, 240°","90°, 270°"],a:0},
+     {t:"sin²x = 1/4 → sinx = ? (두 값)",o:["±1/2","±√2/2","±1/4","±1"],a:0}]},
+{d:"D4",w:"좌표기하: 중점 · 기울기 · 수직이등분선",rv:"D1~D3 삼각방정식 오답 다시",en:"0606 · Coordinate geometry",ko:"공통수학2 · 도형의 방정식",df:"perpendicular bisector",gm:"0606 coordinate geometry",kh:"perpendicular bisector",yt:"수직이등분선",
+ qq:[{t:"A(2,3), B(8,7)의 수직이등분선은?",o:["y = −3/2 x + 25/2","y = 2/3 x + 5","y = −3/2 x + 5","y = 3/2 x − 1"],a:0},
+     {t:"기울기 2인 직선에 수직인 직선의 기울기는?",o:["−1/2","2","1/2","−2"],a:0}]},
+{d:"D5",w:"원의 방정식 · 접선",rv:"D4 좌표기하 오답 다시",en:"0606 · Circles",ko:"공통수학2 · 원의 방정식",df:"equation of a circle",gm:"0606 coordinate geometry",kh:"equation of a circle",yt:"원의 방정식",
+ qq:[{t:"(x−3)²+(y+2)²=25. 중심과 반지름은?",o:["(3,−2), r=5","(−3,2), r=5","(3,−2), r=25","(3,2), r=5"],a:0},
+     {t:"위 원 위 점(6,2)에서 접선의 기울기는?",o:["−3/4","4/3","3/4","−4/3"],a:0}]},
+{d:"D6",w:"주간 복습 + Week 2 전체 퀴즈",rev:true}
+]},
+// W3: 함수 (보강)
+{t:"함수 (합성·역함수 보강)",pri:true,days:[
+{d:"D1",w:"함수 표기 · domain · range",rv:"W2 오답 복습",en:"0606 · Functions",ko:"공통수학2 · 함수",df:"functions",gm:"0606 functions",kh:"functions domain range",yt:"함수 정의역 치역",
+ qq:[{t:"f(x)=3x−2. f(5)=?",o:["13","17","11","7"],a:0},
+     {t:"f(x)=√(x−4). domain은?",o:["x ≥ 4","x ≥ 0","x > 4","모든 실수"],a:0}]},
+{d:"D2",w:"합성함수 fg(x), gf(x)",rv:"D1 domain 문제 다시",en:"0606 · Composite functions",ko:"공통수학2 · 합성함수",df:"composite functions",gm:"0606 functions",kh:"composite functions",yt:"합성함수",
+ qq:[{t:"f=3x−2, g=x²+1. fg(3)=?",o:["28","50","10","26"],a:0},
+     {t:"같은 f,g. gf(3)=?",o:["50","28","26","10"],a:0}]},
+{d:"D3",w:"역함수 f⁻¹(x) — 기본",rv:"D2 합성함수 순서 실수한 것 다시",en:"0606 · Inverse functions",ko:"공통수학2 · 역함수",df:"inverse functions",gm:"0606 functions inverse",kh:"inverse functions",yt:"역함수",
+ qq:[{t:"f(x)=(2x+5)/(x−1). f⁻¹(x)=?",o:["(x+5)/(x−2)","(x−5)/(x+2)","(2x−5)/(x+1)","(x+1)/(2x−5)"],a:0},
+     {t:"위 f⁻¹(3)=?",o:["8","−2","4","1"],a:0}]},
+{d:"D4",w:"역함수 — 연습 더 (진단 보강)",rv:"D3 역함수 풀이 과정 다시 써보기",en:"0606 · Inverse functions",ko:"공통수학2 · 역함수",df:"inverse functions",kh:"inverse functions",yt:"역함수 구하는 법",
+ qq:[{t:"f(x)=4x−7. f⁻¹(5)=?",o:["3","−2","12","48"],a:0},
+     {t:"f(x)=2x+1. ff⁻¹(x)=?",o:["x","2x+1","(x−1)/2","4x+3"],a:0}]},
+{d:"D5",w:"modulus 함수 |f(x)|",rv:"D3~D4 역함수 오답 총정리",en:"0606 · Modulus function",ko:"— 영어 교재 위주",df:"modulus functions",gm:"0606 modulus function",kh:"absolute value function",yt:"절댓값 함수",
+ qq:[{t:"|2x−3|=7 의 해는?",o:["x=5, x=−2","x=5 만","x=5, x=2","x=−5, x=2"],a:0},
+     {t:"|x+1| < 3 의 해는?",o:["−4 < x < 2","x < 2","x > −4","x < −4 또는 x > 2"],a:0}]},
+{d:"D6",w:"주간 복습 + Week 3 전체 퀴즈",rev:true}
+]},
+// W4: 그래프 변환 + 로그
+{t:"그래프 변환 + 로그·지수",pri:false,days:[
+{d:"D1",w:"그래프 변환 f(x±a), f(x)±a",rv:"W3 역함수 한 문제 다시",en:"0606 · Transformations",ko:"공통수학2 · 함수의 그래프",df:"transformations of graphs",gm:"0606 graph transformations",kh:"graph transformations",yt:"함수 평행이동",
+ qq:[{t:"y=f(x)를 y=f(x−3)으로 바꾸면?",o:["오른쪽 3 이동","왼쪽 3 이동","위로 3 이동","x축 대칭"],a:0},
+     {t:"y=f(x)+2 는?",o:["위로 2 이동","오른쪽 2 이동","y축 대칭","x방향 2배"],a:0}]},
+{d:"D2",w:"지수함수 e^x · 그래프",rv:"D1 변환 문제 다시",en:"0606 · Exponential functions",ko:"대수 · 지수함수",df:"exponential graphs",gm:"0606 exponential logarithm",kh:"exponential functions",yt:"지수함수",
+ qq:[{t:"y=2^x 그래프의 y절편은?",o:["1","0","2","−1"],a:0},
+     {t:"y=e^(−x) 는 어떤 모양?",o:["감소 곡선","증가 곡선","직선","포물선"],a:0}]},
+{d:"D3",w:"로그 + 로그법칙",rv:"D2 지수함수 그래프 특징 정리",en:"0606 · Logarithms",ko:"대수 · 로그법칙",df:"laws of logarithms",gm:"0606 logarithm",kh:"logarithm properties",yt:"로그 성질 로그법칙",
+ qq:[{t:"log₃ 81 = ?",o:["4","3","9","27"],a:0},
+     {t:"log₂8 + log₂4 = ?",o:["5","12","7","3"],a:0}]},
+{d:"D4",w:"로그·지수 방정식 풀기",rv:"D3 로그법칙 정리 노트 다시",en:"0606 · Log/exp equations",ko:"대수 · 지수로그 방정식",df:"logarithms",kh:"solving exponential equations",yt:"지수 로그 방정식",
+ qq:[{t:"3^x = 15 → x ≈ ?",o:["2.46","2.71","3.00","1.68"],a:0},
+     {t:"ln(e²) = ?",o:["2","e²","1","0"],a:0}]},
+{d:"D5",w:"비선형→직선화 (lg y vs x)",rv:"D4 방정식 풀이 다시",en:"0606 · Straight line graphs",ko:"— 영어 교재 위주",df:"straight line graphs",kh:"linearizing exponential data",yt:"로그 직선화",
+ qq:[{t:"y=ab^x → lg y = ?",o:["lg a + x lg b","a + bx","ln a + x ln b","x log a"],a:0},
+     {t:"위에서 lg y를 y축, x를 x축에 놓으면?",o:["직선 (기울기 lg b)","곡선","포물선","원"],a:0}]},
+{d:"D6",w:"주간 복습 + Week 4 전체 퀴즈",rev:true}
+]},
+// W5: 다항식 + 수열
+{t:"다항식 + 수열·순열조합",pri:false,days:[
+{d:"D1",w:"remainder theorem (나머지정리)",rv:"W4 로그법칙 한 문제 다시",en:"0606 · Polynomials",ko:"공통수학1 · 나머지정리",df:"remainder theorem",gm:"0606 remainder factor theorem",kh:"remainder theorem",yt:"나머지정리",
+ qq:[{t:"f(x)=2x³−x²+3x−5. f(2)=? (나머지)",o:["13","7","3","21"],a:0},
+     {t:"나머지정리: f(x)÷(x−a)의 나머지는?",o:["f(a)","f(−a)","f(0)","a"],a:0}]},
+{d:"D2",w:"factor theorem + 삼차식 인수분해",rv:"D1 나머지정리 한 문제 다시",en:"0606 · Polynomials",ko:"공통수학1 · 인수정리",df:"factor theorem",gm:"0606 remainder factor theorem",kh:"factor theorem",yt:"인수정리 삼차식",
+ qq:[{t:"x³−6x²+11x−6. x=1 대입하면?",o:["0","6","−6","1"],a:0},
+     {t:"위 식을 인수분해하면?",o:["(x−1)(x−2)(x−3)","(x+1)(x+2)(x+3)","(x−1)(x−6)(x+1)","(x−1)(x²−5x+6)만"],a:0}]},
+{d:"D3",w:"등차수열 (AP) + 합",rv:"D2 삼차식 인수분해 풀이 다시",en:"0606 · Sequences (AP)",ko:"대수 · 등차수열",df:"arithmetic sequences",gm:"0606 arithmetic progression",kh:"arithmetic sequences",yt:"등차수열",
+ qq:[{t:"a=5, d=3. T₂₀=?",o:["62","65","57","60"],a:0},
+     {t:"같은 AP의 S₂₀=?",o:["670","620","1240","335"],a:0}]},
+{d:"D4",w:"등비수열 (GP) + 합",rv:"D3 등차수열 합 공식 다시",en:"0606 · Sequences (GP)",ko:"대수 · 등비수열",df:"geometric sequences",gm:"0606 geometric progression",kh:"geometric series",yt:"등비수열",
+ qq:[{t:"a=4, r=2. S₈=?",o:["1020","510","2040","255"],a:0},
+     {t:"|r|<1 일 때 무한등비합 공식은?",o:["a/(1−r)","a/(r−1)","ar/(1−r)","a(1−rⁿ)/(1−r)"],a:0}]},
+{d:"D5",w:"순열·조합 기초",rv:"D4 등비수열 합 다시",en:"0606 · Permutations/Combinations",ko:"공통수학1 · 순열조합",df:"permutations combinations",gm:"0606 permutations combinations",kh:"permutations combinations",yt:"순열 조합",
+ qq:[{t:"₅P₂ = ?",o:["20","10","25","60"],a:0},
+     {t:"₅C₂ = ?",o:["10","20","25","5"],a:0}]},
+{d:"D6",w:"주간 복습 + Week 5 전체 퀴즈",rev:true}
+]},
+// W6: 미분
+{t:"미분 (Differentiation)",pri:false,days:[
+{d:"D1",w:"미분 개념 + 다항식 미분",rv:"W5 인수정리 한 문제 다시",en:"0606 · Differentiation",ko:"미적분Ⅰ · 도함수",df:"differentiation",gm:"0606 differentiation",kh:"derivative power rule",yt:"미분 도함수",
+ qq:[{t:"y=3x⁴ → dy/dx = ?",o:["12x³","3x³","12x⁴","4x³"],a:0},
+     {t:"y=5x² − 3x + 7 → dy/dx = ?",o:["10x − 3","10x − 3x","5x − 3","10x + 7"],a:0}]},
+{d:"D2",w:"음·분수 지수 미분 + chain rule",rv:"D1 미분 연습 3문제 다시",en:"0606 · Chain rule",ko:"— 영어 위주",df:"chain rule",gm:"0606 chain rule differentiation",kh:"chain rule derivative",yt:"합성함수 미분",
+ qq:[{t:"y=x⁻² → dy/dx = ?",o:["−2x⁻³","−2x⁻¹","2x⁻³","−x⁻³"],a:0},
+     {t:"y=(2x+1)⁵ → dy/dx = ?",o:["10(2x+1)⁴","5(2x+1)⁴","10(2x+1)⁵","2(2x+1)⁴"],a:0}]},
+{d:"D3",w:"product rule · quotient rule",rv:"D2 chain rule 오답 다시",en:"0606 · Product/Quotient rule",ko:"— 영어 위주",df:"product rule quotient rule",gm:"0606 product quotient rule",kh:"product rule quotient rule",yt:"곱의 미분 몫의 미분",
+ qq:[{t:"product rule: d/dx[uv] = ?",o:["u'v + uv'","u'v'","(u'v − uv')/v²","u'v − uv'"],a:0},
+     {t:"quotient rule: d/dx[u/v] = ?",o:["(u'v − uv')/v²","u'v + uv'","(uv' − u'v)/v²","u'/v'"],a:0}]},
+{d:"D4",w:"접선 · 법선 방정식",rv:"D3 product/quotient 1문제 다시",en:"0606 · Tangents & normals",ko:"미적분Ⅰ · 접선",df:"equation of a tangent",gm:"0606 tangent normal differentiation",kh:"tangent line equation",yt:"접선의 방정식",
+ qq:[{t:"y=x³−3x, x=2에서 접선 기울기는?",o:["9","3","12","6"],a:0},
+     {t:"y=x³−3x, (2,2)에서 접선 방정식은?",o:["y=9x−16","y=9x−2","y=3x−4","y=12x−22"],a:0}]},
+{d:"D5",w:"극대·극소 (stationary points)",rv:"D4 접선 한 문제 다시",en:"0606 · Stationary points",ko:"미적분Ⅰ · 극대극소",df:"turning points",gm:"0606 stationary points",kh:"maximum minimum derivative",yt:"극대 극소",
+ qq:[{t:"y=x³−12x. stationary points의 x는?",o:["x=±2","x=0, x=12","x=±√12","x=2 만"],a:0},
+     {t:"x=−2일 때 극대인지 극소인지?",o:["극대 (y''<0)","극소 (y''>0)","변곡점","판별 불가"],a:0}]},
+{d:"D6",w:"주간 복습 + Week 6 전체 퀴즈",rev:true}
+]},
+// W7: 미분 응용 + 적분
+{t:"미분 응용 + 적분",pri:false,days:[
+{d:"D1",w:"변화율 (rates of change)",rv:"W6 극대극소 한 문제 다시",en:"0606 · Rates of change",ko:"미적분Ⅰ · 미분 응용",df:"differentiation",kh:"rate of change derivative",yt:"변화율 미분",
+ qq:[{t:"y=x²+3x. x=4에서 dy/dx=?",o:["11","7","8","4"],a:0},
+     {t:"위 값의 의미는?",o:["x=4에서 기울기","y=4에서 값","넓이","최솟값"],a:0}]},
+{d:"D2",w:"적분 = 미분의 역 (부정적분)",rv:"D1 변화율 한 문제 다시",en:"0606 · Integration",ko:"미적분Ⅰ · 부정적분",df:"integration",kh:"antiderivative",yt:"부정적분",
+ qq:[{t:"∫ x³ dx = ?",o:["x⁴/4 + c","x⁴ + c","3x² + c","x³/3 + c"],a:0},
+     {t:"∫ 6x² dx = ?",o:["2x³ + c","3x³ + c","6x³ + c","12x + c"],a:0}]},
+{d:"D3",w:"정적분 계산",rv:"D2 부정적분 3문제 다시",en:"0606 · Definite integrals",ko:"미적분Ⅰ · 정적분",df:"integration",kh:"definite integral",yt:"정적분",
+ qq:[{t:"∫₁³ (4x−1) dx = ?",o:["14","12","10","16"],a:0},
+     {t:"∫₀² 3x² dx = ?",o:["8","6","12","9"],a:0}]},
+{d:"D4",w:"곡선 아래 넓이",rv:"D3 정적분 한 문제 다시",en:"0606 · Area under curve",ko:"미적분Ⅰ · 정적분 활용",df:"area under a graph",kh:"area under curve integral",yt:"정적분 넓이",
+ qq:[{t:"y=6x−x², 0≤x≤6. 넓이=?",o:["36","18","72","12"],a:0},
+     {t:"곡선이 x축 아래면 적분값은?",o:["음수 (넓이는 절댓값)","0","양수","계산 불가"],a:0}]},
+{d:"D5",w:"적분 응용 (운동·속도)",rv:"D4 넓이 한 문제 다시",en:"0606 · Kinematics",ko:"— 영어 위주",df:"integration",kh:"integration kinematics",yt:"적분 운동",
+ qq:[{t:"v=3t²일 때 s=∫v dt=?",o:["t³+c","6t+c","3t³+c","t³/3+c"],a:0},
+     {t:"a=dv/dt 이면 v=?",o:["∫a dt","da/dt","a·t","d²s/dt²"],a:0}]},
+{d:"D6",w:"주간 복습 + Week 7 전체 퀴즈",rev:true}
+]},
+// W8: 벡터 + GDC + 마무리
+{t:"벡터 + GDC + 마무리",pri:false,days:[
+{d:"D1",w:"벡터: 표기·덧셈·뺄셈",rv:"W7 적분 한 문제 다시",en:"0606 · Vectors",ko:"— 영어 위주",df:"vectors",gm:"0606 vectors",kh:"vector addition subtraction",yt:"벡터 덧셈 뺄셈",
+ qq:[{t:"a⃗=(3,4). |a⃗|=?",o:["5","7","25","√7"],a:0},
+     {t:"a⃗=(2,5), b⃗=(1,−3). a⃗+b⃗=?",o:["(3,2)","(1,8)","(3,−2)","(2,−15)"],a:0}]},
+{d:"D2",w:"벡터: 위치벡터 · 중점 · 평행",rv:"D1 벡터 크기 한 문제 다시",en:"0606 · Vectors",ko:"— 영어 위주",df:"vectors",kh:"position vectors",yt:"위치벡터",
+ qq:[{t:"A(1,3), B(5,7)의 중점 위치벡터는?",o:["(3,5)","(6,10)","(4,4)","(2,2)"],a:0},
+     {t:"a⃗와 b⃗가 평행하려면?",o:["a⃗=kb⃗ (스칼라배)","a⃗·b⃗=0","a⃗+b⃗=0","|a⃗|=|b⃗|"],a:0}]},
+{d:"D3",w:"0607 GDC 숙달",rv:"D2 벡터 오답 다시",en:"Haese 0607 · GDC",ko:"— 영어 전용",df:"graphing calculator",kh:"graphing calculator",yt:"fx-CG50 사용법",
+ qq:[{t:"GDC에서 y=x²−4의 영점(zero)은?",o:["x=±2","x=4","x=0","x=−4"],a:0},
+     {t:"GDC로 연립 y=x+1, y=x²−3의 교점 개수는?",o:["2","1","0","3"],a:0}]},
+{d:"D4",w:"전체 복습: 함수 · 로그 · 삼각",rv:"8주 전체 오답 노트 점검",en:"Cambridge 기출",ko:"—",
+ qq:[{t:"f(x)=2x+1, g=x². gf(3)=?",o:["49","7","13","50"],a:0},
+     {t:"log₂32 − log₂4 = ?",o:["3","8","7","28"],a:0}]},
+{d:"D5",w:"전체 복습: 미분 · 적분",rv:"약점 단원 최종 점검",en:"Cambridge 기출",ko:"—",
+ qq:[{t:"y=x³−6x²+9x. dy/dx=0 → x=?",o:["1, 3","0, 6","3 만","−1, 3"],a:0},
+     {t:"∫₀² x² dx = ?",o:["8/3","4","2","8"],a:0}]},
+{d:"D6",w:"최종 자가 점검 + 자신감 체크",rev:true}
+]},
+];
+
+const KEY="igcse8w_v3";let state={};let mf=false;
+function ld(){try{const r=localStorage.getItem(KEY);state=r?JSON.parse(r):{};}catch(e){mf=true;state={};}}
+function sv(){if(mf)return;try{localStorage.setItem(KEY,JSON.stringify(state));}catch(e){mf=true;}}
+function td(){const d=new Date();return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');}
+const we=document.getElementById('weeks');
+const TOT=D.reduce((s,w)=>s+w.days.length,0);
+
+function render(){
+we.innerHTML='';
+D.forEach((wk,wi)=>{
+  const dn=wk.days.filter((_,di)=>state[`w${wi}d${di}`]?.done).length;
+  const sec=document.createElement('section');sec.className='wk'+(wk.pri?' pri':'');
+  let tgs=`<span class="tg c">${wk.days.length} tasks</span>`;if(wk.pri)tgs=`<span class="tg p">중점</span>`+tgs;
+  let lis='';
+  wk.days.forEach((day,di)=>{
+    const id=`w${wi}d${di}`;const st=state[id]||{};
+    let chs='';
+    if(day.rev){chs=`<span class="rf rv">복습 · 주간 퀴즈</span>`;}
+    else{
+      if(day.en)chs+=`<span class="rf en"><b>EN</b>${day.en}</span>`;
+      if(day.ko)chs+=`<span class="rf ko"><b>한</b>${day.ko}</span>`;
+      if(day.df)chs+=`<a class="lk df" href="${dH(day.df)}" target="_blank">Dr Frost ${EX}</a>`;
+      if(day.gm)chs+=`<a class="lk gm" href="${gH(day.gm)}" target="_blank">Ginger ${EX}</a>`;
+      if(day.kh)chs+=`<a class="lk kh" href="${kH(day.kh)}" target="_blank">Khan ${EX}</a>`;
+      if(day.yt)chs+=`<a class="lk yt" href="${yH(day.yt)}" target="_blank">영상 ${EX}</a>`;
+    }
+    let rv=day.rv?`<div class="rev">📝 복습: ${day.rv}</div>`:(day.rev?`<div class="rev">📝 이번 주 오답 전체 + 이전 주 약점 다시</div>`:'');
+    let qzH='';
+    if(day.qq&&day.qq.length){
+      let qis='';
+      day.qq.forEach((q,qi)=>{
+        let os='';q.o.forEach((o,oi)=>{os+=`<label class="qi-o" data-oi="${oi}"><input type="radio" name="${id}q${qi}" value="${oi}"><span class="qi-d"></span><span>${o}</span></label>`;});
+        qis+=`<div class="qi"><div class="qi-t">Q${qi+1}. ${q.t}</div><div class="qi-opts">${os}</div></div>`;
+      });
+      qzH=`<div class="qz" data-qz="${id}"><button type="button" class="qz-toggle"><span class="arr">▶</span> 오늘의 퀴즈 (${day.qq.length}문제)</button><div class="qz-body">${qis}<button type="button" class="qz-btn" data-qzb="${id}">채점</button><div class="qz-score" data-qzs="${id}"></div></div></div>`;
+    }
+    lis+=`<li><div class="task ${st.done?'done':''}" data-task="${id}">
+      <label class="cb"><input type="checkbox" data-id="${id}" ${st.done?'checked':''}><span class="bx">${SV}</span></label>
+      <div class="bd"><div class="r1"><span class="dy">${day.d}</span><input type="date" class="dt" data-date="${id}" value="${st.date||''}" aria-label="날짜"></div>
+      <div class="wh2">${day.w}</div>${rv}
+      <div class="chs">${chs}</div>${qzH}</div></div></li>`;
+  });
+  sec.innerHTML=`<div class="wh"><span class="wn">W${wi+1}</span><div class="wt"><h2>${wk.t}</h2><div class="tgs">${tgs}</div></div><span class="wp" data-wp="${wi}">${dn}/${wk.days.length}</span></div><ul>${lis}</ul>`;
+  we.appendChild(sec);
+});
+updTot();
+}
+function gS(id){return state[id]||(state[id]={});}
+function updW(wi){const wk=D[wi];const dn=wk.days.filter((_,di)=>state[`w${wi}d${di}`]?.done).length;const e=document.querySelector(`[data-wp="${wi}"]`);if(e)e.textContent=`${dn}/${wk.days.length}`;}
+function updTot(){const dn=Object.values(state).filter(s=>s?.done).length;const p=Math.round(dn/TOT*100);document.getElementById('oPct').textContent=p+'%';document.getElementById('oBar').style.width=p+'%';document.getElementById('oCount').textContent=`${dn} / ${TOT} 완료`;}
+
+we.addEventListener('change',e=>{
+  const cb=e.target.closest('input[type=checkbox]');
+  if(cb){const id=cb.dataset.id;const st=gS(id);st.done=cb.checked;if(cb.checked&&!st.date)st.date=td();
+    const t=document.querySelector(`[data-task="${id}"]`);if(t)t.classList.toggle('done',cb.checked);
+    const d=document.querySelector(`[data-date="${id}"]`);if(d&&st.date)d.value=st.date;
+    sv();updW(parseInt(id.match(/w(\d+)/)[1]));updTot();return;}
+  const d=e.target.closest('input[type=date]');
+  if(d){gS(d.dataset.date).date=d.value;sv();}
+});
+
+// Quiz toggle
+we.addEventListener('click',e=>{
+  const tg=e.target.closest('.qz-toggle');
+  if(tg){tg.closest('.qz').classList.toggle('open');return;}
+  const btn=e.target.closest('.qz-btn');
+  if(btn){
+    const id=btn.dataset.qzb;
+    const wi=parseInt(id.match(/w(\d+)/)[1]),di=parseInt(id.match(/d(\d+)/)[1]);
+    const qq=D[wi].days[di].qq;if(!qq)return;
+    let sc=0;
+    qq.forEach((q,qi)=>{
+      const sel=document.querySelector(`input[name="${id}q${qi}"]:checked`);
+      const co=document.querySelector(`.qz[data-qz="${id}"] .qi:nth-child(${qi+1}) .qi-o[data-oi="${q.a}"]`);
+      co.classList.add('ok');
+      if(sel){const v=parseInt(sel.value);if(v===q.a)sc++;
+        else{sel.closest('.qi-o').classList.add('no');}}
+      document.querySelectorAll(`input[name="${id}q${qi}"]`).forEach(i=>i.disabled=true);
+    });
+    const se=document.querySelector(`[data-qzs="${id}"]`);
+    se.textContent=`${sc}/${qq.length} 정답` + (sc===qq.length?' ✅':' — 틀린 건 ★표시 후 내일 복습!');
+    btn.disabled=true;btn.style.opacity='.4';
+  }
+});
+
+document.getElementById('reset').addEventListener('click',()=>{if(confirm('모든 체크·날짜·퀴즈를 초기화할까요?')){state={};sv();render();}});
+ld();render();
+</script>
+</body>
+</html>

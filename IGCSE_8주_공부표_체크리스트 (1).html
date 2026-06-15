@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IGCSE 8주 공부표</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#FBFCFD; --grid:#E1E9F2; --ink:#1B2A41; --muted:#6B7787; --faint:#9AA5B3;
+    --check:#2F9E6B; --check-soft:#E4F3EC; --amber:#F2B705; --amber-soft:#FDF3D4;
+    --card:#FFFFFF; --line:#E6EBF1;
+  }
+  *{box-sizing:border-box;}
+  html{-webkit-text-size-adjust:100%;}
+  body{
+    margin:0; font-family:"Noto Sans KR","Space Grotesk",system-ui,sans-serif;
+    color:var(--ink); background-color:var(--paper);
+    background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);
+    background-size:26px 26px; line-height:1.5; padding:0 0 80px;
+  }
+  .wrap{max-width:780px;margin:0 auto;padding:0 18px;}
+  header{padding:38px 0 18px;}
+  .eyebrow{font-family:"Space Mono",monospace;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--check);font-weight:700;margin-bottom:8px;}
+  h1{font-family:"Space Grotesk","Noto Sans KR",sans-serif;font-size:clamp(28px,7vw,42px);font-weight:700;line-height:1.05;margin:0 0 6px;letter-spacing:-.01em;}
+  .sub{color:var(--muted);font-size:14px;max-width:48ch;}
+  .hubs{margin-top:14px;display:flex;gap:8px;flex-wrap:wrap;}
+  .hub{font-size:12px;text-decoration:none;color:var(--ink);background:#fff;border:1px solid var(--line);border-radius:999px;padding:6px 13px;}
+  .hub:hover{border-color:var(--check);color:var(--check);}
+
+  .overall{margin:24px 0 8px;background:var(--ink);color:#fff;border-radius:14px;padding:20px 22px;position:sticky;top:10px;z-index:20;box-shadow:0 8px 24px rgba(27,42,65,.18);}
+  .overall-top{display:flex;align-items:baseline;justify-content:space-between;gap:12px;}
+  .overall-label{font-size:13px;color:#A9B6C9;font-weight:500;}
+  .overall-pct{font-family:"Space Mono",monospace;font-size:34px;font-weight:700;line-height:1;}
+  .overall-count{font-family:"Space Mono",monospace;font-size:13px;color:#A9B6C9;margin-top:8px;}
+  .bar{height:8px;border-radius:6px;background:rgba(255,255,255,.16);margin-top:14px;overflow:hidden;}
+  .bar > i{display:block;height:100%;width:0;background:var(--check);border-radius:6px;transition:width .45s cubic-bezier(.4,0,.2,1);}
+
+  .week{background:var(--card);border:1px solid var(--line);border-radius:14px;margin:18px 0;padding:18px 18px 8px;}
+  .week.priority{border-color:var(--amber);box-shadow:inset 4px 0 0 var(--amber);}
+  .week-head{display:flex;align-items:flex-start;gap:12px;margin-bottom:4px;}
+  .wnum{font-family:"Space Mono",monospace;font-weight:700;font-size:13px;color:var(--faint);padding-top:4px;min-width:40px;}
+  .week.priority .wnum{color:var(--amber);}
+  .week-title{flex:1;}
+  .week-title h2{font-size:18px;font-weight:700;margin:0;letter-spacing:-.01em;}
+  .tags{display:flex;gap:6px;margin-top:6px;flex-wrap:wrap;}
+  .tag{font-family:"Space Mono",monospace;font-size:10px;letter-spacing:.06em;text-transform:uppercase;padding:3px 7px;border-radius:5px;font-weight:700;}
+  .tag.pri{background:var(--amber-soft);color:#7a5c00;}
+  .tag.cnt{background:#EEF2F7;color:var(--muted);}
+  .week-pct{font-family:"Space Mono",monospace;font-size:13px;color:var(--muted);font-weight:700;white-space:nowrap;padding-top:4px;}
+
+  ul{list-style:none;margin:10px 0 0;padding:0;}
+  li{border-top:1px dashed var(--line);}
+  li:first-child{border-top:none;}
+  .task{display:flex;gap:12px;align-items:flex-start;padding:13px 2px;}
+  .cb{flex:none;position:relative;cursor:pointer;}
+  .cb input{position:absolute;opacity:0;width:0;height:0;}
+  .box{width:22px;height:22px;border:2px solid var(--ink);border-radius:6px;margin-top:1px;display:grid;place-items:center;transition:background .18s,border-color .18s;background:#fff;}
+  .box svg{width:13px;height:13px;stroke:#fff;stroke-width:3.2;fill:none;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:20;stroke-dashoffset:20;transition:stroke-dashoffset .22s ease .02s;}
+  .cb input:checked ~ .box{background:var(--check);border-color:var(--check);}
+  .cb input:checked ~ .box svg{stroke-dashoffset:0;}
+  .cb input:focus-visible ~ .box{outline:3px solid rgba(47,158,107,.4);outline-offset:2px;}
+  .body{flex:1;min-width:0;}
+  .row1{display:flex;align-items:center;gap:8px;justify-content:space-between;}
+  .day{font-family:"Space Mono",monospace;font-size:11px;color:var(--faint);font-weight:700;letter-spacing:.05em;}
+  .dt{font-family:"Space Mono",monospace;font-size:11px;color:var(--muted);border:1px solid var(--line);border-radius:6px;padding:2px 6px;background:#fff;width:122px;}
+  .dt:focus{outline:2px solid rgba(47,158,107,.35);border-color:var(--check);}
+  .what{font-size:15px;font-weight:500;transition:color .18s;margin-top:3px;}
+  .done .what{color:var(--faint);text-decoration:line-through;text-decoration-color:var(--check);}
+  .chips{display:flex;gap:6px;margin-top:8px;flex-wrap:wrap;align-items:center;}
+  .ref{font-size:11.5px;padding:3px 8px;border-radius:6px;line-height:1.35;}
+  .ref b{font-family:"Space Mono",monospace;font-size:9px;margin-right:5px;letter-spacing:.05em;vertical-align:1px;}
+  .ref.en{background:#EAF0FA;color:#27406b;} .ref.en b{color:#5a7bb5;}
+  .ref.ko{background:#F2F0EC;color:#5a5247;} .ref.ko b{color:#9a8f7c;}
+  .ref.rev{background:var(--check-soft);color:#1d6f4c;}
+  a.link{font-size:11.5px;text-decoration:none;padding:3px 9px;border-radius:6px;font-weight:600;display:inline-flex;align-items:center;gap:3px;border:1px solid transparent;}
+  a.link.cm{background:#EAF1FB;color:#2456a6;} a.link.cm:hover{border-color:#2456a6;}
+  a.link.kh{background:#EAF6EF;color:#1d7a4f;} a.link.kh:hover{border-color:#1d7a4f;}
+  a.link.yt{background:#FCEDED;color:#b3261e;} a.link.yt:hover{border-color:#b3261e;}
+  a.link svg{width:10px;height:10px;}
+
+  footer{margin-top:26px;text-align:center;}
+  .reset{font-family:"Noto Sans KR",sans-serif;font-size:13px;color:var(--muted);background:none;border:1px solid var(--line);border-radius:8px;padding:9px 16px;cursor:pointer;}
+  .reset:hover{border-color:var(--muted);color:var(--ink);}
+  .note{font-size:12px;color:var(--faint);margin-top:14px;line-height:1.6;}
+
+  @media (prefers-reduced-motion:reduce){*{transition:none !important;}.box svg{stroke-dashoffset:0 !important;}.cb input:not(:checked) ~ .box svg{stroke-dashoffset:20 !important;}}
+  @media (max-width:480px){.wnum{min-width:32px;}.overall{top:6px;}.dt{width:118px;}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="eyebrow">Cambridge IGCSE · 0606 + 0607</div>
+    <h1>8주 공부표</h1>
+    <p class="sub">끝낸 날 체크하고 날짜를 기록하세요. 진행 상황은 이 기기 브라우저에 저장됩니다. 삼각법(2–4주)이 가장 중요합니다.</p>
+    <div class="hubs">
+      <a class="hub" href="https://corbettmaths.com/contents/" target="_blank" rel="noopener">Corbettmaths 목차 ↗</a>
+      <a class="hub" href="https://www.drfrost.org/" target="_blank" rel="noopener">Dr Frost (무료 연습) ↗</a>
+      <a class="hub" href="https://www.mathsgenie.co.uk/" target="_blank" rel="noopener">Maths Genie (기출) ↗</a>
+      <a class="hub" href="https://www.khanacademy.org/math" target="_blank" rel="noopener">Khan Academy ↗</a>
+      <a class="hub" href="https://www.physicsandmathstutor.com/maths-revision/igcse-additional-cie/" target="_blank" rel="noopener">PMT 0606 노트 ↗</a>
+    </div>
+  </header>
+
+  <div class="overall">
+    <div class="overall-top"><span class="overall-label">전체 진행률</span><span class="overall-pct" id="oPct">0%</span></div>
+    <div class="bar"><i id="oBar"></i></div>
+    <div class="overall-count" id="oCount">0 / 48 완료</div>
+  </div>
+
+  <main id="weeks"></main>
+
+  <footer>
+    <button class="reset" id="reset">진행 상황 초기화</button>
+    <p class="note">자료 링크: <b>Corbett</b>=영국식 영상+워크시트 · <b>Khan</b>=영어 강의 · <b>영상</b>=한국어 영상.<br>즉시 채점 연습은 상단 <b>Dr Frost</b>, 시험 마무리는 <b>Cambridge 0606·0607 기출</b> + mark scheme으로.</p>
+  </footer>
+</div>
+
+<script>
+const DATA = [
+  {t:"대수 점검 + 확장", pri:false, days:[
+    {d:"D1",w:"공식 변형 (rearranging formulae)",en:"Pimentel 0580 · Formulae",ko:"공통수학1 · 다항식·방정식",cm:"changing the subject",kh:"rearranging literal equations",yt:"등식의 변형 공식 변형"},
+    {d:"D2",w:"대수 분수 (algebraic fractions)",en:"Pimentel 0580 · Algebraic fractions",ko:"공통수학2 · 유리식",cm:"algebraic fractions",kh:"adding algebraic fractions",yt:"유리식 계산"},
+    {d:"D3",w:"Surds 간단화·유리화",en:"Pimentel 0580 · Indices and surds",ko:"중3 · 제곱근과 실수",cm:"surds",kh:"simplifying radicals rationalizing",yt:"제곱근 무리수 분모의 유리화"},
+    {d:"D4",w:"지수법칙 + standard form",en:"Pimentel 0580 · Indices, standard form",ko:"공통수학1 · 지수",cm:"standard form",kh:"exponent properties scientific notation",yt:"지수법칙"},
+    {d:"D5",w:"연립방정식 (일차+이차)",en:"Pimentel 0580 · Simultaneous equations",ko:"공통수학1 · 연립방정식",cm:"simultaneous equations",kh:"systems of equations nonlinear",yt:"연립방정식 이차"},
+    {d:"D6",w:"modulus 맛보기 + 복습 + 퀴즈 1",rev:true},
+  ]},
+  {t:"삼각법 ① 직각삼각형", pri:true, days:[
+    {d:"D1",w:"SOHCAHTOA — 변 구하기",en:"Pimentel 0580 · Trigonometry",ko:"중3 · 삼각비",cm:"trigonometry",kh:"right triangle trigonometry find side",yt:"삼각비 직각삼각형 변의 길이"},
+    {d:"D2",w:"각 구하기 (sin⁻¹·cos⁻¹·tan⁻¹)",en:"Pimentel 0580 · Trigonometry",ko:"중3 · 삼각비",cm:"trigonometry",kh:"inverse trig ratios find angle",yt:"삼각비 각도 구하기"},
+    {d:"D3",w:"피타고라스 + 삼각법 혼합",en:"Pimentel 0580 · Pythagoras",ko:"중3 · 피타고라스·삼각비",cm:"pythagoras",kh:"pythagorean theorem",yt:"피타고라스 정리"},
+    {d:"D4",w:"특수각 정확값 (30·45·60)",en:"Pimentel 0580 · Trigonometry",ko:"중3 · 삼각비의 값",cm:"exact trig values",kh:"trig values special angles",yt:"삼각비 특수각 30 45 60"},
+    {d:"D5",w:"3D 삼각법 기초",en:"Pimentel 0580 / Haese 0607",ko:"— 영어 교재 위주",cm:"3d trigonometry",kh:"3d trigonometry",yt:"입체도형 삼각비"},
+    {d:"D6",w:"복습 + 퀴즈 2",rev:true},
+  ]},
+  {t:"삼각법 ② 사인·코사인 법칙", pri:true, days:[
+    {d:"D1",w:"사인 법칙 — 변 구하기",en:"Pimentel 0580 · Sine rule",ko:"대수 · 삼각함수 (사인법칙)",cm:"sine rule",kh:"law of sines",yt:"사인법칙"},
+    {d:"D2",w:"사인 법칙 — 각 + ambiguous case",en:"Pimentel 0580 · Sine rule",ko:"대수 · 삼각함수",cm:"sine rule",kh:"law of sines ambiguous case",yt:"사인법칙 모호한 경우"},
+    {d:"D3",w:"코사인 법칙 — 변 구하기",en:"Pimentel 0580 · Cosine rule",ko:"대수 · 삼각함수 (코사인법칙)",cm:"cosine rule",kh:"law of cosines",yt:"코사인법칙"},
+    {d:"D4",w:"코사인 법칙 — 각 구하기",en:"Pimentel 0580 · Cosine rule",ko:"대수 · 삼각함수",cm:"cosine rule",kh:"law of cosines find angle",yt:"코사인법칙 각도"},
+    {d:"D5",w:"삼각형 넓이 + 법칙 선택 훈련",en:"Pimentel 0580 · Area of a triangle",ko:"대수 · 삼각함수 (넓이)",cm:"area of a triangle",kh:"area of triangle using sine",yt:"삼각형 넓이 사인"},
+    {d:"D6",w:"활용(bearings 등) + 복습 + 퀴즈 3",en:"Pimentel 0580 · Bearings",ko:"— 영어 교재 위주",cm:"bearings",kh:"bearings trigonometry",yt:"방위각 삼각비"},
+  ]},
+  {t:"삼각법 ③ 0606 수준 확장", pri:true, days:[
+    {d:"D1",w:"radian + 호의 길이 (arc)",en:"0606 교재 · Circular measure",ko:"대수 · 삼각함수 (호도법)",cm:"arc length",kh:"radians arc length",yt:"호도법 호의 길이"},
+    {d:"D2",w:"부채꼴 넓이 · 활꼴 (segment)",en:"0606 교재 · Circular measure",ko:"대수 · 삼각함수 (호도법)",cm:"area of a sector",kh:"area of sector",yt:"부채꼴 넓이"},
+    {d:"D3",w:"삼각함수 그래프",en:"0606 교재 · Trig (graphs)",ko:"대수 · 삼각함수 (그래프)",cm:"trig graphs",kh:"graphs of sine cosine tangent",yt:"삼각함수 그래프"},
+    {d:"D4",w:"삼각 항등식",en:"0606 교재 · Trig (identities)",ko:"대수 · 삼각함수 (항등식)",cm:"trig identities",kh:"trigonometric identities",yt:"삼각함수 항등식"},
+    {d:"D5",w:"삼각방정식 0°–360°",en:"0606 교재 · Trig (equations)",ko:"대수 · 삼각함수 (삼각방정식)",cm:"trig equations",kh:"solving trigonometric equations",yt:"삼각방정식"},
+    {d:"D6",w:"삼각법 3주 누적 복습 + 퀴즈 4",rev:true},
+  ]},
+  {t:"Functions (함수)", pri:false, days:[
+    {d:"D1",w:"함수 표기 / domain·range",en:"Pimentel 0580 / 0606 · Functions",ko:"공통수학2 · 함수",cm:"functions",kh:"functions domain and range",yt:"함수 정의역 치역"},
+    {d:"D2",w:"합성함수 composite fg(x)",en:"0606 교재 · Functions",ko:"공통수학2 · 합성함수",cm:"composite functions",kh:"composite functions",yt:"합성함수"},
+    {d:"D3",w:"역함수 inverse f⁻¹(x)",en:"0606 교재 · Functions",ko:"공통수학2 · 역함수",cm:"inverse functions",kh:"inverse functions",yt:"역함수"},
+    {d:"D4",w:"modulus 함수 |f(x)|",en:"0606 교재 · Functions / Modulus",ko:"— 영어 교재 위주",cm:"modulus functions",kh:"absolute value functions graph",yt:"절댓값 함수 그래프"},
+    {d:"D5",w:"그래프 변환 (transformation)",en:"0606 교재 · Functions",ko:"공통수학2 · 함수의 그래프",cm:"transformations of graphs",kh:"graph transformations of functions",yt:"함수의 평행이동 대칭이동"},
+    {d:"D6",w:"복습 + 퀴즈 5",rev:true},
+  ]},
+  {t:"Logs·지수함수 + 다항식", pri:false, days:[
+    {d:"D1",w:"지수함수 e^x",en:"0606 교재 · Exp & log functions",ko:"대수 · 지수함수",cm:"exponential graphs",kh:"exponential functions",yt:"지수함수"},
+    {d:"D2",w:"로그 + 로그법칙",en:"0606 교재 · Logarithms",ko:"대수 · 지수와 로그 (로그법칙)",cm:"laws of logarithms",kh:"logarithm properties rules",yt:"로그 성질 로그법칙"},
+    {d:"D3",w:"로그·지수 방정식 풀기",en:"0606 교재 · Log/exp equations",ko:"대수 · 지수함수와 로그함수",cm:"logarithms",kh:"solving exponential logarithmic equations",yt:"지수 로그 방정식"},
+    {d:"D4",w:"remainder theorem (나머지정리)",en:"0606 교재 · Factors of polynomials",ko:"공통수학1 · 다항식 (나머지정리)",cm:"remainder theorem",kh:"polynomial remainder theorem",yt:"나머지정리"},
+    {d:"D5",w:"factor theorem + 삼차식 인수분해",en:"0606 교재 · Factors of polynomials",ko:"공통수학1 · 다항식 (인수정리)",cm:"factor theorem",kh:"factor theorem factoring cubic",yt:"인수정리 삼차식 인수분해"},
+    {d:"D6",w:"복습 + 퀴즈 6",rev:true},
+  ]},
+  {t:"미분 (Differentiation)", pri:false, days:[
+    {d:"D1",w:"미분 개념 + 다항식 미분",en:"0606 교재 · Differentiation",ko:"미적분Ⅰ · 미분계수와 도함수",cm:"differentiation",kh:"derivative power rule polynomials",yt:"미분 도함수 다항함수"},
+    {d:"D2",w:"음·분수 지수 미분",en:"0606 교재 · Differentiation",ko:"미적분Ⅰ · 도함수",cm:"differentiation",kh:"derivative fractional negative exponents",yt:"미분 분수 음수 지수"},
+    {d:"D3",w:"chain rule (합성함수 미분)",en:"0606 교재 · Differentiation",ko:"— 영어 위주 (한국은 미적분Ⅱ)",cm:"chain rule",kh:"chain rule derivative",yt:"합성함수 미분 연쇄법칙"},
+    {d:"D4",w:"접선 · 법선",en:"0606 교재 · Tangents & normals",ko:"미적분Ⅰ · 접선의 방정식",cm:"equation of a tangent",kh:"equation of tangent line derivative",yt:"접선의 방정식 미분"},
+    {d:"D5",w:"극대 · 극소 (stationary points)",en:"0606 교재 · Stationary points",ko:"미적분Ⅰ · 극대·극소",cm:"turning points",kh:"finding maximum minimum derivative",yt:"극대 극소 미분"},
+    {d:"D6",w:"복습 + 퀴즈 7",rev:true},
+  ]},
+  {t:"적분 + 0607 GDC + 마무리", pri:false, days:[
+    {d:"D1",w:"적분 = 미분의 역",en:"0606 교재 · Integration",ko:"미적분Ⅰ · 부정적분",cm:"integration",kh:"antiderivative indefinite integral",yt:"부정적분"},
+    {d:"D2",w:"정적분",en:"0606 교재 · Integration",ko:"미적분Ⅰ · 정적분",cm:"integration",kh:"definite integral",yt:"정적분"},
+    {d:"D3",w:"곡선 아래 넓이",en:"0606 교재 · Area under a curve",ko:"미적분Ⅰ · 정적분의 활용",cm:"area under a graph",kh:"area under curve integral",yt:"정적분 넓이"},
+    {d:"D4",w:"0607 GDC 숙달 (그래프·교점·통계)",en:"Haese 0607 · GDC / Pimentel 0607",ko:"— 영어 전용",kh:"graphing calculator basics",yt:"공학용 그래프 계산기 fx-CG50 사용법"},
+    {d:"D5",w:"전체 복습 (삼각법 집중)",rev:true},
+    {d:"D6",w:"전체 복습 + 자가 점검 + 퀴즈 8",rev:true},
+  ]},
+];
+
+const CHECK_SVG='<svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>';
+const EXT_SVG='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg>';
+const KEY="igcse8w_v2";
+let state={}; let memFallback=false;
+
+function load(){try{const r=localStorage.getItem(KEY);state=r?JSON.parse(r):{};}catch(e){memFallback=true;state={};}}
+function save(){if(memFallback)return;try{localStorage.setItem(KEY,JSON.stringify(state));}catch(e){memFallback=true;}}
+function today(){const d=new Date();return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');}
+
+const weeksEl=document.getElementById('weeks');
+const TOTAL=DATA.reduce((s,w)=>s+w.days.length,0);
+const cHref=q=>'https://corbettmaths.com/?s='+encodeURIComponent(q);
+const kHref=q=>'https://www.khanacademy.org/search?page_search_query='+encodeURIComponent(q);
+const yHref=q=>'https://www.youtube.com/results?search_query='+encodeURIComponent(q+' 강의');
+
+function render(){
+  weeksEl.innerHTML='';
+  DATA.forEach((wk,wi)=>{
+    const done=wk.days.filter((_,di)=>state[`w${wi}d${di}`]&&state[`w${wi}d${di}`].done).length;
+    const sec=document.createElement('section');
+    sec.className='week'+(wk.pri?' priority':'');
+    let tags=`<span class="tag cnt">${wk.days.length} tasks</span>`;
+    if(wk.pri)tags=`<span class="tag pri">우선</span>`+tags;
+    let lis='';
+    wk.days.forEach((day,di)=>{
+      const id=`w${wi}d${di}`;
+      const st=state[id]||{};
+      const checked=st.done?'checked':'';
+      const dval=st.date||'';
+      let chips='';
+      if(day.rev){chips=`<span class="ref rev">복습 · 퀴즈</span>`;}
+      else{
+        if(day.en)chips+=`<span class="ref en"><b>EN</b>${day.en}</span>`;
+        if(day.ko)chips+=`<span class="ref ko"><b>한</b>${day.ko}</span>`;
+        if(day.cm)chips+=`<a class="link cm" href="${cHref(day.cm)}" target="_blank" rel="noopener">Corbett ${EXT_SVG}</a>`;
+        if(day.kh)chips+=`<a class="link kh" href="${kHref(day.kh)}" target="_blank" rel="noopener">Khan ${EXT_SVG}</a>`;
+        if(day.yt)chips+=`<a class="link yt" href="${yHref(day.yt)}" target="_blank" rel="noopener">영상 ${EXT_SVG}</a>`;
+      }
+      lis+=`<li><div class="task ${st.done?'done':''}" data-task="${id}">
+        <label class="cb"><input type="checkbox" data-id="${id}" ${checked}><span class="box">${CHECK_SVG}</span></label>
+        <div class="body">
+          <div class="row1"><span class="day">${day.d}</span>
+            <input type="date" class="dt" data-date="${id}" value="${dval}" aria-label="${day.d} 완료 날짜"></div>
+          <div class="what">${day.w}</div>
+          <div class="chips">${chips}</div>
+        </div></li>`;
+    });
+    sec.innerHTML=`<div class="week-head"><span class="wnum">W${wi+1}</span>
+      <div class="week-title"><h2>${wk.t}</h2><div class="tags">${tags}</div></div>
+      <span class="week-pct" data-wpct="${wi}">${done}/${wk.days.length}</span></div><ul>${lis}</ul>`;
+    weeksEl.appendChild(sec);
+  });
+  updateTotals();
+}
+function getSt(id){return state[id]||(state[id]={});}
+function updateWeek(wi){
+  const wk=DATA[wi];
+  const done=wk.days.filter((_,di)=>state[`w${wi}d${di}`]&&state[`w${wi}d${di}`].done).length;
+  const el=document.querySelector(`[data-wpct="${wi}"]`);
+  if(el)el.textContent=`${done}/${wk.days.length}`;
+}
+function updateTotals(){
+  const done=Object.values(state).filter(s=>s&&s.done).length;
+  const pct=Math.round(done/TOTAL*100);
+  document.getElementById('oPct').textContent=pct+'%';
+  document.getElementById('oBar').style.width=pct+'%';
+  document.getElementById('oCount').textContent=`${done} / ${TOTAL} 완료`;
+}
+
+weeksEl.addEventListener('change',(e)=>{
+  const cb=e.target.closest('input[type=checkbox]');
+  if(cb){
+    const id=cb.dataset.id; const st=getSt(id);
+    st.done=cb.checked;
+    if(cb.checked&&!st.date){st.date=today();}
+    const taskEl=document.querySelector(`[data-task="${id}"]`);
+    if(taskEl)taskEl.classList.toggle('done',cb.checked);
+    const di=document.querySelector(`[data-date="${id}"]`);
+    if(di&&st.date)di.value=st.date;
+    save();updateWeek(parseInt(id.match(/w(\d+)/)[1]));updateTotals();
+    return;
+  }
+  const di=e.target.closest('input[type=date]');
+  if(di){const id=di.dataset.date;getSt(id).date=di.value;save();}
+});
+
+document.getElementById('reset').addEventListener('click',()=>{
+  if(confirm('모든 체크와 날짜를 지울까요? 되돌릴 수 없습니다.')){state={};save();render();}
+});
+
+load();render();
+</script>
+</body>
+</html>
